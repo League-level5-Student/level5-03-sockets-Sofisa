@@ -29,11 +29,13 @@ public class ClientGreeter {
 			DataInputStream input = new DataInputStream(connection.getInputStream());
 			// 8. Use the DataInputStream object to print a message from the server using
 			// the readUTF() method.
-			input.readUTF();
+			System.out.println(input.readUTF());
 			// 9. Close the client's server object
 			connection.close();
 
 		} catch (IOException e) {
+			e.printStackTrace();
+
 			// TODO: handle exception
 		}
 	}
