@@ -19,7 +19,7 @@ import _00_Click_Chat.networking.Server;
  */
 
 public class ChatApp {
-	
+	JFrame frame = new JFrame();
 	JButton button = new JButton("CLICK");
 	
 	Server server;
@@ -35,19 +35,19 @@ public class ChatApp {
 		int response = JOptionPane.showConfirmDialog(null, "Would you like to host a connection?", "Buttons!", JOptionPane.YES_NO_OPTION);
 		if(response == JOptionPane.YES_OPTION){
 			server = new Server(8080);
-			setTitle("SERVER");
+			frame.setTitle("SERVER");
 			JOptionPane.showMessageDialog(null, "Server started at: " + server.getIPAddress() + "\nPort: " + server.getPort());
 			button.addActionListener((e)->{
 				server.sendClick();
 			});
-			add(button);
-			setVisible(true);
-			setSize(400, 300);
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.add(button);
+			frame.setVisible(true);
+			frame.setSize(400, 300);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			server.start();
 			
 		}else{
-			setTitle("CLIENT");
+			frame.setTitle("CLIENT");
 			String ipStr = JOptionPane.showInputDialog("Enter the IP Address");
 			String prtStr = JOptionPane.showInputDialog("Enter the port number");
 			int port = Integer.parseInt(prtStr);
@@ -55,10 +55,10 @@ public class ChatApp {
 			button.addActionListener((e)->{
 				client.sendClick();
 			});
-			add(button);
-			setVisible(true);
-			setSize(400, 300);
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.add(button);
+			frame.setVisible(true);
+			frame.setSize(400, 300);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			client.start();
 		}
 	}
